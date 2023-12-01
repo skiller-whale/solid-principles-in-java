@@ -1,27 +1,30 @@
-public class InvoiceCalculator {
-    public static final double SALES_TAX = 0.2;
+import java.math.BigDecimal;
 
-    private double amount;
+public class InvoiceCalculator {
+
+    public static final BigDecimal SALES_TAX = new BigDecimal("0.2");
+
+    private BigDecimal amount;
     private CardType cardType;
 
-    public InvoiceCalculator(double amount, CardType cardType) {
+    public InvoiceCalculator(BigDecimal amount, CardType cardType) {
         this.amount = amount;
         this.cardType = cardType;
     }
 
-    public double getTotal() {
-        return amount + getSalesTax() + getCardFees();
+    public BigDecimal getTotal() {
+        return amount.add(calculateSalesTax()).add(calculateCardFees());
     }
 
-    public double getSubTotal() {
-      return amount;
+    public BigDecimal getSubTotal() {
+        return amount;
     }
 
-    public double getSalesTax() {
-        return SALES_TAX * amount;
+    public BigDecimal calculateSalesTax() {
+        return SALES_TAX.multiply(amount);
     }
 
-    public double getCardFees() {
-        return cardType.getFeeRate() * amount;
+    public BigDecimal calculateCardFees() {
+        return cardType.getFeeRate().multiply(amount);
     }
 }

@@ -1,15 +1,17 @@
+import java.math.BigDecimal;
+
 public enum CardType {
-    VISA(0.015),
-    MASTERCARD(0.01),
-    AMEX(0.03);
+    VISA(new BigDecimal("0.015")),
+    MASTERCARD(new BigDecimal("0.01")),
+    AMEX(new BigDecimal("0.03"));
 
-    private final double feeRate;
+    private final BigDecimal feeRate;
 
-    CardType(double feeRate) {
+    CardType(BigDecimal feeRate) {
         this.feeRate = feeRate;
     }
 
-    public double getFeeRate() {
+    public BigDecimal getFeeRate() {
         return feeRate;
     }
 }

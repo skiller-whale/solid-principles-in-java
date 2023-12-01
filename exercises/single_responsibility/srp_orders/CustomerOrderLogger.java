@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 public class CustomerOrderLogger {
-    private static CustomerOrderData order;
+
+    private CustomerOrderData order;
 
     public CustomerOrderLogger(CustomerOrderData order) {
         this.order = order;
@@ -19,7 +20,13 @@ public class CustomerOrderLogger {
     }
 
     public void log() throws IOException {
-        String filename = Paths.get(System.getProperty("user.dir"), "_invoices", getInvoiceNumber()).toString();
+        String filename = Paths
+            .get(
+                System.getProperty("user.dir"),
+                "_invoices",
+                getInvoiceNumber()
+            )
+            .toString();
         try (FileWriter fileWriter = new FileWriter(new File(filename))) {
             fileWriter.write(formatOrder());
         }
