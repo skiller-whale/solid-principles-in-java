@@ -1,13 +1,12 @@
 import api.PaymentService;
 import cards.*;
-import java.math.BigDecimal;
 
 public class PaymentProcessor {
 
-    private BigDecimal amount;
+    private double amount;
     private Card card;
 
-    public PaymentProcessor(BigDecimal amount, Card card) {
+    public PaymentProcessor(double amount, Card card) {
         this.amount = amount;
         this.card = card;
     }
