@@ -8,7 +8,7 @@ services:
       - ./exercises:/app/exercises
       - ./attendance_id:/app/sync/attendance_id
   sync:
-    image: ghcr.io/skiller-whale/learnersync:dockerize
+    image: ghcr.io/skiller-whale/learnersync
     network_mode: host
     environment:
       SERVER_URL: https://train.skillerwhale.com/
